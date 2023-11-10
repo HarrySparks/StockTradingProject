@@ -16,4 +16,5 @@ class Stock:
         stockprice = yf.Ticker(self.name).history(start=date, period="1d")
         return stockprice['Close'][0]
 
-    pass
+    def getstockpricesindaterange(self):
+        pass
