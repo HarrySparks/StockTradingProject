@@ -2,6 +2,7 @@ from stock import Stock
 from tkinter import *
 import yfinance as yf
 from graph import GraphDrawer
+
 stock1 = Stock()
 graphDrawer = GraphDrawer()
 
@@ -10,9 +11,10 @@ colour2 = "#176B87"
 colour3 = "#64CCC5"
 
 window = Tk()
-window.geometry("900x600")
-window.config(padx=50, pady=50, bg=colour1)
+window.geometry("900x900")
+window.config(padx=50, pady=10, bg=colour1)
 window.resizable(True, True)
+
 def onclick():
     #dont' create a new displaylable every time just configure it with the stock data
     displaylabel.config(text=stock1.getstockprice(inputstock.get()))
@@ -22,7 +24,7 @@ def GetStockDataForSymbol():
     #gets the symbol TSLA from the inputstock entry field passes as parameter
     stockData = stock1.getStockPriceDataForPeriod(inputstock.get())
     #calls our graph drawer class and pass it the frame and data, the graph is added to our graph frmae
-    graphDrawer.showGraphForDataFrame(stockData,graphframe)
+    graphDrawer.showGraphForDataFrame(inputstock.get(),stockData,graphframe)
 
 #create graphframe
 graphframe = Frame(window)
@@ -56,8 +58,5 @@ def getstockprice(stockname,stockdate):
     return stockprice['Close'][0]
 
 #msft.info, msft.capital_gains, msft.get_shares_full(start="2023-01-01", end=None), msft.balance_sheet
-
-
-
 
 """

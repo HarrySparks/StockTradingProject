@@ -22,16 +22,17 @@ class GraphDrawer:
         print(stock_history.loc['2021-01-04 00:00:00-05:00', 'High'])
 
     #this accepts teh data and then draws the graph adds to the grpahframe
-    def showGraphForDataFrame(self,stock_history, graphFrame):
+    def showGraphForDataFrame(self,stock_name,stock_history, graphFrame):
         # Plotting
         fig, ax = plt.subplots()
-        ax.plot(stock_history.index, stock_history['High'], label='High')
-        ax.plot(stock_history.index, stock_history['Low'], label='Low')
+        ax.plot(stock_history.index, stock_history['Close'], label='Close')
+        #ax.plot(stock_history.index, stock_history['High'], label='High')
+        #ax.plot(stock_history.index, stock_history['Low'], label='Low')
 
         # Formatting the plot
-        ax.set(xlabel='Date', ylabel='Price', title='MSFT Daily High and Low Prices (2021)')
+        ax.set(xlabel='Date', ylabel='Price', title=stock_name.upper() + ' Price At Close')
         ax.grid()
-        plt.xticks(rotation=45)  # Rotate date labels for better readability
+        plt.xticks(rotation=15)  # Rotate date labels for better readability
         plt.legend()
 
         # Create a FigureCanvasTkAgg object and attach the figure (fig) to it to the graphframe
@@ -39,6 +40,7 @@ class GraphDrawer:
 
         # Get the Tkinter widget from the canvas and pack it into the frame
         canvas_widget = canvas.get_tk_widget()
+
         canvas_widget.pack()
 
         # Draw the canvas
