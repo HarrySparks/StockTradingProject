@@ -2,11 +2,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import yfinance as yf
 import pandas as pd 
+from tkinter import *
 from stock import Stock
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 class GraphDrawer:
-
     #READ THIS TO UNDERSTAND HOW TO MANIPULATE DATA FRAMES RETURNED, WORKS WITH COLUMNS AND INDEXES
     def exampleOfHowToDealWithDataFrames(self):
         msft = yf.Ticker("TSLA")
@@ -37,11 +37,12 @@ class GraphDrawer:
 
         # Create a FigureCanvasTkAgg object and attach the figure (fig) to it to the graphframe
         canvas = FigureCanvasTkAgg(fig, master=graphFrame)
-
+            
         # Get the Tkinter widget from the canvas and pack it into the frame
         canvas_widget = canvas.get_tk_widget()
-
         canvas_widget.pack()
+
+        #need to remove previous graph before displaying new one
 
         # Draw the canvas
         canvas.draw()

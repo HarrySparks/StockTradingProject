@@ -21,32 +21,36 @@ def onclick():
 
 #this si called when we press get stock data button
 def GetStockDataForSymbol():
+    for widget in graphframe.winfo_children():
+        widget.destroy()
     #gets the symbol TSLA from the inputstock entry field passes as parameter
     stockData = stock1.getStockPriceDataForPeriod(inputstock.get())
     #calls our graph drawer class and pass it the frame and data, the graph is added to our graph frmae
     graphDrawer.showGraphForDataFrame(inputstock.get(),stockData,graphframe)
 
-#create graphframe
+#create frames
+mainframe = Frame(window)
 graphframe = Frame(window)
 
 #create entry field and label
-label = Label(graphframe, text="Enter Stock Ticker:")
+label = Label(mainframe, text="Enter Stock Ticker:")
 label.pack()
-inputstock = Entry(graphframe, width=35, bg=colour2)
+inputstock = Entry(mainframe, width=35, bg=colour2)
 inputstock.pack(pady = 5)
 
 #create button for getting stock data for a period of time
-get_data_button = Button(graphframe, text="Get Data", command=GetStockDataForSymbol, width=40, height=5, bg=colour3)
+get_data_button = Button(mainframe, text="Get Data", command=GetStockDataForSymbol, width=15, height=5, bg=colour3)
 get_data_button.pack(pady = 10)
 
 #create button for getting stockprice
-getStockPrice = Button(graphframe, text="Get Stock Price",command=onclick, width=40, height=5, bg=colour3)
+getStockPrice = Button(mainframe, text="Get Stock Price",command=onclick, width=15, height=5, bg=colour3)
 getStockPrice.pack(pady = 10)
 
 #create the display lable once...
-displaylabel = Label(graphframe, bg=colour1, text="") 
+displaylabel = Label(mainframe, bg=colour1, text="") 
 displaylabel.pack()
 
+mainframe.pack()
 graphframe.pack()
 
 window.mainloop()
