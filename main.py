@@ -39,11 +39,11 @@ inputstock = Entry(mainframe, width=35, bg=colour2)
 inputstock.pack(pady = 5)
 
 #create button for getting stock data for a period of time
-get_data_button = Button(mainframe, text="Get Data", command=GetStockDataForSymbol, width=15, height=5, bg=colour3)
+get_data_button = Button(mainframe, text="Get Data", command=GetStockDataForSymbol, width=40, height=5, bg=colour3)
 get_data_button.pack(pady = 10)
 
 #create button for getting stockprice
-getStockPrice = Button(mainframe, text="Get Stock Price",command=onclick, width=15, height=5, bg=colour3)
+getStockPrice = Button(mainframe, text="Get Stock Price",command=onclick, width=40, height=5, bg=colour3)
 getStockPrice.pack(pady = 10)
 
 #create the display lable once...

@@ -23,6 +23,8 @@ class GraphDrawer:
 
     #this accepts teh data and then draws the graph adds to the grpahframe
     def showGraphForDataFrame(self,stock_name,stock_history, graphFrame):
+        for widget in graphFrame.winfo_children():
+            widget.destroy()
         # Plotting
         fig, ax = plt.subplots()
         ax.plot(stock_history.index, stock_history['Close'], label='Close')
