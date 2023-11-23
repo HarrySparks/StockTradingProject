@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 import numpy as np
 import yfinance as yf
 import pandas as pd 
@@ -26,13 +27,17 @@ class GraphDrawer:
         for widget in graphFrame.winfo_children():
             widget.destroy()
         # Plotting
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(facecolor=("#FFFFFF"))
+        
         ax.plot(stock_history.index, stock_history['Close'], label='Close')
         #ax.plot(stock_history.index, stock_history['High'], label='High')
         #ax.plot(stock_history.index, stock_history['Low'], label='Low')
 
-        # Formatting the plot
-        ax.set(xlabel='Date', ylabel='Price', title=stock_name.upper() + ' Price At Close')
+        # Formatting the plot        
+        ax.set_title(stock_name.upper() + ' Price At Close',color='c')
+        ax.set_xlabel('Date',color='c')
+        ax.set_ylabel('Price',color='c')
+
         ax.grid()
         plt.xticks(rotation=15)  # Rotate date labels for better readability
         plt.legend()
