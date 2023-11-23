@@ -54,13 +54,3 @@ mainframe.pack()
 graphframe.pack()
 
 window.mainloop()
-
-"""
-def getstockprice(stockname,stockdate):
-    stock = yf.Ticker(stockname)
-    stockprice = stock.history(start=stockdate, period="1d")
-    return stockprice['Close'][0]
-
-#msft.info, msft.capital_gains, msft.get_shares_full(start="2023-01-01", end=None), msft.balance_sheet
-
-"""
