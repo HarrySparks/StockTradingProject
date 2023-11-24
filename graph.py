@@ -12,7 +12,6 @@ class GraphDrawer:
     def exampleOfHowToDealWithDataFrames(self):
         msft = yf.Ticker("TSLA")
         stock_history = msft.history(start="2021-01-01", end="2021-12-31")
-
         #this gets the index of the dataframe or table
         print(stock_history.index)
         #this gets all the columns of the dataframe or table  ['Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits']
@@ -27,11 +26,9 @@ class GraphDrawer:
         for widget in graphFrame.winfo_children():
             widget.destroy()
         # Plotting
-        fig, ax = plt.subplots(facecolor=("#FFFFFF"))
+        fig, ax = plt.subplots(facecolor=("#BBBBEE"))
         
         ax.plot(stock_history.index, stock_history['Close'], label='Close')
-        #ax.plot(stock_history.index, stock_history['High'], label='High')
-        #ax.plot(stock_history.index, stock_history['Low'], label='Low')
 
         # Formatting the plot        
         ax.set_title(stock_name.upper() + ' Price At Close',color='c')

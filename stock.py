@@ -11,7 +11,7 @@ class Stock:
         return stockprice['Close'][0]
 
     #get stock data for a symbol for a period of time and return the data frame
-    def getStockPriceDataForPeriod(self,symbol):
+    def getstockpricedatayear(self,symbol):
         msft = yf.Ticker(symbol.upper())
         #these dates could be passed as parameters... fogure out how to
         stock_history = msft.history(start="2022-01-01", end="2023-10-31")  
