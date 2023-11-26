@@ -31,9 +31,9 @@ class GraphDrawer:
         ax.plot(stock_history.index, stock_history['Close'], label='Close')
 
         # Formatting the plot        
-        ax.set_title(stock_name.upper() + ' Price At Close',color='c')
-        ax.set_xlabel('Date',color='c')
-        ax.set_ylabel('Price',color='c')
+        ax.set_title(stock_name.upper() + ' Price At Close',color="#000000")
+        ax.set_xlabel('Date',color="#000000")
+        ax.set_ylabel('Price',color="#000000")
 
         ax.grid()
         plt.xticks(rotation=15)  # Rotate date labels for better readability
