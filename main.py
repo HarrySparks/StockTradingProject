@@ -23,9 +23,10 @@ def ShowStockPrice():
     displaylabel.config(text=math.trunc(stock.getstockprice(inputstock.get())*100)/100)
 
 def ShowStockPriceDate():
-    year=2014
-    month=3
-    day=15
+    dateentry = inputdate.get()
+    year, month, day = map(str, dateentry.split('-'))
+    print(year + "" + month + "" + day)
+
     collectivedate=str(year)+" : "+str(month)+" : "+str(day)+" | "
     displaylabel.config(text=collectivedate+str(math.trunc(stock.getstockpricedate(year,month,day,inputstock.get())*100)/100))
 
@@ -36,13 +37,21 @@ def GetStockDataForSymbol():
     graphDrawer.showGraphForDataFrame(inputstock.get(),stockData,graphframe)
 
 mainframe = Frame(window)
-graphframe = Frame(window, height=600) #need to make graph larger
+graphframe = Frame(window, height=600) 
+#need to make graph larger
 
 label = Label(mainframe, text="Enter Stock Ticker:")
-label.pack()
+label.pack(side=TOP)
 
 inputstock = Entry(mainframe, width=35, bg=colour6)
-inputstock.pack(pady = 5)
+inputstock.pack(pady = 5, side=TOP)
+
+datelabel = Label(mainframe, text="Enter Stock Date:")
+datelabel.pack(side=TOP)
+
+inputdate = Entry(mainframe, width=35, bg=colour6)
+inputdate.pack(pady = 5, side=TOP)
+
 
 displaylabel = Label(mainframe, text="", bg=colour6) 
 displaylabel.pack()
