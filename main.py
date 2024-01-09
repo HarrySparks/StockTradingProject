@@ -20,13 +20,18 @@ window.config(padx=50, pady=10, bg=colour3)
 window.resizable(True, True)
 
 def ShowStockPrice():
-    displaylabel.config(text=math.trunc(stock.getstockprice(inputstock.get())*100)/100)
+    dateentry = inputdate.get()
+    year, month, day = map(str, dateentry.split('-'))
+    collectivedate = str(year)+"/"+str(month)+"/"+str(day)
+
+    text = "current price : " + str(math.trunc(stock.getstockprice(inputstock.get())*100)/100) + "\n" + collectivedate + " price : "+ str(math.trunc(stock.getstockpricedate(year,month,day,inputstock.get())*100)/100)
+
+    displaylabel.config(text=text)
 
 def ShowStockPriceDate():
     dateentry = inputdate.get()
     year, month, day = map(str, dateentry.split('-'))
-    print(year + "" + month + "" + day)
-
+    
     collectivedate=str(year)+" : "+str(month)+" : "+str(day)+" | "
     displaylabel.config(text=collectivedate+str(math.trunc(stock.getstockpricedate(year,month,day,inputstock.get())*100)/100))
 
@@ -51,7 +56,6 @@ datelabel.pack(side=TOP)
 
 inputdate = Entry(mainframe, width=35, bg=colour6)
 inputdate.pack(pady = 5, side=TOP)
-
 
 displaylabel = Label(mainframe, text="", bg=colour6) 
 displaylabel.pack()

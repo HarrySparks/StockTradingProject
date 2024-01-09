@@ -15,8 +15,8 @@ class Stock:
         msft = yf.Ticker(symbol.upper())
         #these dates could be passed as parameters... fogure out how to
 
-        stock_history = msft.history(start="2022-01-01", end="2023-10-31")  
-        pick one
+        #stock_history = msft.history(start="2022-01-01", end="2023-10-31")  
+        
         stock_history = msft.history(start="1985-01-01", end="2023-12-30")  
         return stock_history
 
