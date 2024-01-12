@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import matplotlib.colors as mcolors
 import numpy as np
 import yfinance as yf
 import pandas as pd 
@@ -22,11 +21,11 @@ class GraphDrawer:
         print(stock_history.loc['2021-01-04 00:00:00-05:00', 'High'])
 
     #this accepts teh data and then draws the graph adds to the grpahframe
-    def showGraphForDataFrame(self,stock_name,stock_history, graphFrame):
+    def DisplayGraph(self,stock_name,stock_history, graphFrame):
         for widget in graphFrame.winfo_children():
             widget.destroy()
         # Plotting
-        fig, ax = plt.subplots(facecolor=("#BBBBEE"))
+        fig, ax = plt.subplots(facecolor=("#BBBBEE"), layout='tight', linewidth=0.0)
         
         ax.plot(stock_history.index, stock_history['Close'], label='Close')
 

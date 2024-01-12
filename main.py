@@ -1,8 +1,10 @@
 from stock import Stock
+from graph import GraphDrawer
+
 from tkinter import *
 import yfinance as yf
 import math
-from graph import GraphDrawer
+
 
 stock = Stock()
 graphDrawer = GraphDrawer()
@@ -31,41 +33,39 @@ def ShowStockPrice():
     displaylabel.config(text=text)
 
 def GetStockGraph():
+    ShowStockPrice()
     for widget in graphframe.winfo_children():
         widget.destroy()
     stockData = stock.range(inputrange0.get(),inputrange1.get(),inputstock.get())
-    graphDrawer.showGraphForDataFrame(inputstock.get(),stockData,graphframe)
+    graphDrawer.DisplayGraph(inputstock.get(),stockData,graphframe)
 
 mainframe = Frame(window)
 graphframe = Frame(window, height=600) 
 #need to make graph larger
 
 stocklabel = Label(mainframe, text="Enter Stock Ticker:")
-stocklabel.pack(side=TOP)
+stocklabel.pack()
 inputstock = Entry(mainframe, width=35, bg=colour6)
-inputstock.pack(pady = 5, side=TOP)
+inputstock.pack(pady = 5)
 
 datelabel = Label(mainframe, text="Enter Stock Date:")
-datelabel.pack(side=TOP)
+datelabel.pack()
 inputdate = Entry(mainframe, width=35, bg=colour6)
-inputdate.pack(pady = 5, side=TOP)
+inputdate.pack(pady = 5)
 
 displaylabel = Label(mainframe, text="", bg=colour6) 
 displaylabel.pack()
 
 getDataButton = Button(mainframe, text="Get Data", command=GetStockGraph, width=40, height=5, bg=colour5)
-getDataButton.pack(pady=10, padx=10, side=LEFT)
-
-getStockPrice = Button(mainframe, text="Get Stock Price",command=ShowStockPrice, width=40, height=5, bg=colour5)
-getStockPrice.pack(pady=10, padx=10, side=RIGHT)
+getDataButton.pack(pady=10, padx=10)
 
 labelrange0 = Label(mainframe, text="Enter start range:")
-labelrange0.pack(side=TOP)
+labelrange0.pack()
 inputrange0 = Entry(mainframe, width=35, bg=colour6)
 inputrange0.pack(pady = 5)
 
 labelrange1 = Label(mainframe, text="Enter end range:")
-labelrange1.pack(side=TOP)
+labelrange1.pack()
 inputrange1 = Entry(mainframe, width=35, bg=colour6)
 inputrange1.pack(pady = 5)
 
