@@ -1,10 +1,10 @@
 from stock import Stock
 from graph import GraphDrawer
+from wallet import Wallet
 
 from tkinter import *
 import yfinance as yf
 import math
-
 
 stock = Stock()
 graphDrawer = GraphDrawer()
@@ -39,8 +39,8 @@ def GetStockGraph():
     stockData = stock.range(inputrange0.get(),inputrange1.get(),inputstock.get())
     graphDrawer.DisplayGraph(inputstock.get(),stockData,graphframe)
 
-mainframe = Frame(window)
-graphframe = Frame(window, height=600) 
+mainframe = Frame(window, width=600)
+graphframe = Frame(window, width=500) 
 #need to make graph larger
 
 stocklabel = Label(mainframe, text="Enter Stock Ticker:")
@@ -52,9 +52,6 @@ datelabel = Label(mainframe, text="Enter Stock Date:")
 datelabel.pack()
 inputdate = Entry(mainframe, width=35, bg=colour6)
 inputdate.pack(pady = 5)
-
-displaylabel = Label(mainframe, text="", bg=colour6) 
-displaylabel.pack()
 
 getDataButton = Button(mainframe, text="Get Data", command=GetStockGraph, width=40, height=5, bg=colour5)
 getDataButton.pack(pady=10, padx=10)
@@ -69,7 +66,10 @@ labelrange1.pack()
 inputrange1 = Entry(mainframe, width=35, bg=colour6)
 inputrange1.pack(pady = 5)
 
-mainframe.pack()
-graphframe.pack()
+displaylabel = Label(mainframe, text="", bg=colour6) 
+displaylabel.pack(pady = 5)
+
+mainframe.pack(fill="both")
+graphframe.pack(expand=True, fill="both")
 
 window.mainloop()

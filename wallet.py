@@ -1,4 +1,4 @@
 
 
 class Wallet:
-    _balance = 500
+    balance = 500
