@@ -54,15 +54,15 @@ inputdate = Entry(mainframe, width=35, bg=colour6)
 inputdate.pack(pady = 5)
 
 getDataButton = Button(mainframe, text="Get Data", command=GetStockGraph, width=40, height=5, bg=colour5)
-getDataButton.pack(pady=10, padx=10)
+getDataButton.pack(pady=10)
 
 labelrange0 = Label(mainframe, text="Enter start range:")
-labelrange0.pack()
+labelrange0.pack(pady = 5)
 inputrange0 = Entry(mainframe, width=35, bg=colour6)
 inputrange0.pack(pady = 5)
 
 labelrange1 = Label(mainframe, text="Enter end range:")
-labelrange1.pack()
+labelrange1.pack(pady = 5)
 inputrange1 = Entry(mainframe, width=35, bg=colour6)
 inputrange1.pack(pady = 5)
 

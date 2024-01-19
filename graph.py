@@ -28,7 +28,6 @@ class GraphDrawer:
         fig, ax = plt.subplots(facecolor=("#BBBBEE"), linewidth=0.0)
         
         ax.plot(stock_history.index, stock_history['Close'], label='Close')
-
         # Formatting the plot        
         ax.set_title(stock_name.upper() + ' Price At Close',color="#000000")
         ax.set_xlabel('Date',color="#000000")
@@ -37,10 +36,8 @@ class GraphDrawer:
         ax.grid()
         plt.xticks(rotation=15)  # Rotate date labels for better readability
         plt.legend()
-
         # Create a FigureCanvasTkAgg object and attach the figure (fig) to it to the graphframe
         canvas = FigureCanvasTkAgg(fig, master=graphFrame)
-            
         # Get the Tkinter widget from the canvas and pack it into the frame
         canvas_widget = canvas.get_tk_widget()
         canvas_widget.pack()

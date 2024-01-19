@@ -1,4 +1,4 @@
 
 
 class Wallet:
-    balance = 500
+    balance = 100000
