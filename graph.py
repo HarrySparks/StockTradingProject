@@ -25,7 +25,7 @@ class GraphDrawer:
         for widget in graphFrame.winfo_children():
             widget.destroy()
         # Plotting
-        fig, ax = plt.subplots(facecolor=("#BBBBEE"), linewidth=0.0)
+        fig, ax = plt.subplots(facecolor=("#BBBBEE"))
         
         ax.plot(stock_history.index, stock_history['Close'], label='Close')
         # Formatting the plot        
@@ -42,7 +42,4 @@ class GraphDrawer:
         canvas_widget = canvas.get_tk_widget()
         canvas_widget.pack()
 
-        #need to remove previous graph before displaying new one
-
-        # Draw the canvas
         canvas.draw()

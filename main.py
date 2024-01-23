@@ -21,6 +21,11 @@ window.geometry("900x900")
 window.config(padx=50, pady=10, bg=colour3)
 window.resizable(True, True)
 
+def close_window():
+    window.destroy()
+
+window.protocol("WM_DELETE_WINDOW", close_window)
+
 def ShowStockPrice():
     text = "current price : " + str(math.trunc(stock.price(inputstock.get())*100)/100)
 
@@ -39,37 +44,40 @@ def GetStockGraph():
     stockData = stock.range(inputrange0.get(),inputrange1.get(),inputstock.get())
     graphDrawer.DisplayGraph(inputstock.get(),stockData,graphframe)
 
-mainframe = Frame(window, width=600)
-graphframe = Frame(window, width=500) 
-#need to make graph larger
+mainframe = Frame(window)
+graphframe = Frame(window) 
 
-stocklabel = Label(mainframe, text="Enter Stock Ticker:")
-stocklabel.pack()
-inputstock = Entry(mainframe, width=35, bg=colour6)
-inputstock.pack(pady = 5)
+stocklabel = Label(window, text="Enter Stock Ticker:")
+stocklabel.grid(column = 1, row = 0)
 
-datelabel = Label(mainframe, text="Enter Stock Date:")
-datelabel.pack()
-inputdate = Entry(mainframe, width=35, bg=colour6)
-inputdate.pack(pady = 5)
+inputstock = Entry(window, width=35, bg=colour6)
+inputstock.grid(column = 1, row = 1)
 
-getDataButton = Button(mainframe, text="Get Data", command=GetStockGraph, width=40, height=5, bg=colour5)
-getDataButton.pack(pady=10)
+datelabel = Label(window, text="Enter Stock Date:")
+datelabel.grid(column = 1, row = 3)
 
-labelrange0 = Label(mainframe, text="Enter start range:")
-labelrange0.pack(pady = 5)
-inputrange0 = Entry(mainframe, width=35, bg=colour6)
-inputrange0.pack(pady = 5)
+inputdate = Entry(window, width=35, bg=colour6)
+inputdate.grid(column = 1, row = 4)
 
-labelrange1 = Label(mainframe, text="Enter end range:")
-labelrange1.pack(pady = 5)
-inputrange1 = Entry(mainframe, width=35, bg=colour6)
-inputrange1.pack(pady = 5)
+getDataButton = Button(window, text="Get Data", command=GetStockGraph, width=35, bg=colour5)
+getDataButton.grid(column = 2, row = 4, rowspan = 1)
 
-displaylabel = Label(mainframe, text="", bg=colour6) 
-displaylabel.pack(pady = 5)
+labelrange0 = Label(window, text="Enter start range:")
+labelrange0.grid(column = 3, row = 0)
+inputrange0 = Entry(window, width=35, bg=colour6)
+inputrange0.grid(column = 3, row = 1)
 
-mainframe.pack(fill="both")
-graphframe.pack(expand=True, fill="both")
+labelrange1 = Label(window, text="Enter end range:")
+labelrange1.grid(column = 3, row = 3)
+inputrange1 = Entry(window, width=35, bg=colour6)
+inputrange1.grid(column = 3, row = 4)
+
+displaylabel = Label(window, text="", bg=colour6) 
+displaylabel.grid(column = 2, row = 5)
+
+graphframe.grid(column = 0, row = 15, rowspan = 10, columnspan=10, sticky="s")
+
+window.grid_rowconfigure(2, minsize=10) #creates a gap at row 2 of space 10
+window.grid_rowconfigure(6, minsize=30)
 
 window.mainloop()
