@@ -28,6 +28,12 @@ def CloseWindow():
 
 window.protocol("WM_DELETE_WINDOW", CloseWindow)
 
+def WalletBuyStock(stockname, price):
+    Wallet.balance -= price
+    print(Wallet.balance)
+    Wallet.ownedstocks.append([stockname, price])# needs to show number of stock instead fo price
+    print(Wallet.ownedstocks)
+
 def ShowStockPrice():
     text = "current price : " + str(math.trunc(stock.price(inputstock.get())*100)/100)
 
@@ -61,7 +67,7 @@ datelabel.grid(column = 1, row = 3)
 inputdate = Entry(window, width=35, bg=colour6)
 inputdate.grid(column = 1, row = 4)
 
-buybutton = Button(window, text="Buy", width=35, bg=cgreen)
+buybutton = Button(window, text="Buy", width=35, command=lambda:WalletBuyStock(inputstock.get(),stock.price(inputstock.get())), bg=cgreen)
 buybutton.grid(column = 2, row = 1, rowspan = 1)
 
 getdatabutton = Button(window, text="Get Data", command=GetStockGraph, width=35, bg=colour5)
