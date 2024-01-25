@@ -16,15 +16,17 @@ colour4="#324A5F"
 colour5="#7F8A9E"
 colour6="#CCC9DC"
 
+cgreen="#00FF00"
+
 window = Tk()
 window.geometry("900x900")
 window.config(padx=50, pady=10, bg=colour3)
 window.resizable(True, True)
 
-def close_window():
+def CloseWindow():
     window.destroy()
 
-window.protocol("WM_DELETE_WINDOW", close_window)
+window.protocol("WM_DELETE_WINDOW", CloseWindow)
 
 def ShowStockPrice():
     text = "current price : " + str(math.trunc(stock.price(inputstock.get())*100)/100)
@@ -59,8 +61,11 @@ datelabel.grid(column = 1, row = 3)
 inputdate = Entry(window, width=35, bg=colour6)
 inputdate.grid(column = 1, row = 4)
 
-getDataButton = Button(window, text="Get Data", command=GetStockGraph, width=35, bg=colour5)
-getDataButton.grid(column = 2, row = 4, rowspan = 1)
+buybutton = Button(window, text="Buy", width=35, bg=cgreen)
+buybutton.grid(column = 2, row = 1, rowspan = 1)
+
+getdatabutton = Button(window, text="Get Data", command=GetStockGraph, width=35, bg=colour5)
+getdatabutton.grid(column = 2, row = 4, rowspan = 1)
 
 labelrange0 = Label(window, text="Enter start range:")
 labelrange0.grid(column = 3, row = 0)
