@@ -8,6 +8,7 @@ import math
 
 stock = Stock()
 graphDrawer = GraphDrawer()
+wallet = Wallet()
 
 colour1="#0A141B"
 colour2="#0C1821"
@@ -27,12 +28,6 @@ def CloseWindow():
     window.destroy()
 
 window.protocol("WM_DELETE_WINDOW", CloseWindow)
-
-def WalletBuyStock(stockname, price):
-    Wallet.balance -= price
-    print(Wallet.balance)
-    Wallet.ownedstocks.append([stockname, price])# needs to show number of stock instead fo price
-    print(Wallet.ownedstocks)
 
 def ShowStockPrice():
     text = "current price : " + str(math.trunc(stock.price(inputstock.get())*100)/100)
@@ -55,38 +50,39 @@ def GetStockGraph():
 mainframe = Frame(window)
 graphframe = Frame(window) 
 
-stocklabel = Label(window, text="Enter Stock Ticker:")
+stocklabel = Label(mainframe, text="Enter Stock Ticker:")
 stocklabel.grid(column = 1, row = 0)
 
-inputstock = Entry(window, width=35, bg=colour6)
+inputstock = Entry(mainframe, width=35, bg=colour6)
 inputstock.grid(column = 1, row = 1)
 
-datelabel = Label(window, text="Enter Stock Date:")
+datelabel = Label(mainframe, text="Enter Stock Date:")
 datelabel.grid(column = 1, row = 3)
 
-inputdate = Entry(window, width=35, bg=colour6)
+inputdate = Entry(mainframe, width=35, bg=colour6)
 inputdate.grid(column = 1, row = 4)
 
-buybutton = Button(window, text="Buy", width=35, command=lambda:WalletBuyStock(inputstock.get(),stock.price(inputstock.get())), bg=cgreen)
+buybutton = Button(mainframe, text="Buy", width=35, command=lambda:wallet.BuyStock(inputstock.get(),stock.price(inputstock.get())), bg=cgreen)
 buybutton.grid(column = 2, row = 1, rowspan = 1)
 
-getdatabutton = Button(window, text="Get Data", command=GetStockGraph, width=35, bg=colour5)
+getdatabutton = Button(mainframe, text="Get Data", command=GetStockGraph, width=35, bg=colour5)
 getdatabutton.grid(column = 2, row = 4, rowspan = 1)
 
-labelrange0 = Label(window, text="Enter start range:")
+labelrange0 = Label(mainframe, text="Enter start range:")
 labelrange0.grid(column = 3, row = 0)
-inputrange0 = Entry(window, width=35, bg=colour6)
+inputrange0 = Entry(mainframe, width=35, bg=colour6)
 inputrange0.grid(column = 3, row = 1)
 
-labelrange1 = Label(window, text="Enter end range:")
+labelrange1 = Label(mainframe, text="Enter end range:")
 labelrange1.grid(column = 3, row = 3)
-inputrange1 = Entry(window, width=35, bg=colour6)
+inputrange1 = Entry(mainframe, width=35, bg=colour6)
 inputrange1.grid(column = 3, row = 4)
 
-displaylabel = Label(window, text="", bg=colour6) 
+displaylabel = Label(mainframe, text="", bg=colour6) 
 displaylabel.grid(column = 2, row = 5)
 
-graphframe.grid(column = 0, row = 15, rowspan = 10, columnspan=10, sticky="s")
+mainframe.place(relx=0.5, rely=0.1, anchor=CENTER)
+graphframe.place(relx=0.5, rely=1, anchor=S)
 
 window.grid_rowconfigure(2, minsize=10) #creates a gap at row 2 of space 10
 window.grid_rowconfigure(6, minsize=30)
