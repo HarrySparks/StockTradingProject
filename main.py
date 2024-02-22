@@ -82,7 +82,7 @@ displaylabel = Label(mainframe, text="", bg=colour6)
 displaylabel.grid(column = 2, row = 5)
 
 mainframe.place(relx=0.5, rely=0.1, anchor=CENTER)
-graphframe.place(relx=0.5, rely=1, anchor=S)
+graphframe.place(relx=0.5, rely=0.9, anchor=S)
 
 window.grid_rowconfigure(2, minsize=10) #creates a gap at row 2 of space 10
 window.grid_rowconfigure(6, minsize=30)
