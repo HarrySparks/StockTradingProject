@@ -16,7 +16,6 @@ class Stock:
 
         if len(range0) != 0 and len(range1) != 0:
             stock_history = stockticker.history(start=range0, end=range1)  
-            print(stock_history)
             return stock_history
 
         stock_history = stockticker.history(start="1926-01-01", end="2023-12-30")  
