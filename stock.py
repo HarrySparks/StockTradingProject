@@ -12,15 +12,16 @@ class Stock:
 
     #get stock data for a symbol for a period of time and return the data frame
     def range(self,range0,range1,symbol):
-        msft = yf.Ticker(symbol.upper())
+        stockticker = yf.Ticker(symbol.upper())
 
 #use python date time
 
         if len(range0) != 0 and len(range1) != 0:
-            stock_history = msft.history(start=range0, end=range1)  
+            stock_history = stockticker.history(start=range0, end=range1)  
             return stock_history
 
-        stock_history = msft.history(start="1926-01-01", end="2024-1-30")  
+        stock_history = stockticker.history(start="1926-01-01", end="2023-12-30")  
+
         return stock_history
 
     def getstockpricesindaterange(self):
