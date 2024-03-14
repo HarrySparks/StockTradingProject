@@ -41,9 +41,8 @@ def login():
     c.execute("SELECT * FROM users WHERE username=? AND password=?", (username, hashed_password))
     if c.fetchone():
         messagebox.showinfo("Success", "Login successful.")
-        subprocess.run(["python", "main.py"])
-        self.app.root.destroy()
         root.destroy()
+        subprocess.run(["python", "main.py"])
     else:
         messagebox.showerror("Error", "Invalid username or password.")
 
