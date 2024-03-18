@@ -65,6 +65,9 @@ inputdate.grid(column = 1, row = 4)
 buybutton = Button(mainframe, text="Buy", width=35, command=lambda:wallet.BuyStock(inputstock.get(),stock.price(inputstock.get())), bg=cgreen)
 buybutton.grid(column = 2, row = 1, rowspan = 1)
 
+sellbutton = Button(mainframe, text="Sell", width=35, command=lambda:wallet.SellStock(inputstock.get(),stock.price(inputstock.get())), bg=cgreen)
+sellbutton.grid(column = 2, row = 2, rowspan = 1)
+
 getdatabutton = Button(mainframe, text="Get Data", command=GetStockGraph, width=35, bg=colour5)
 getdatabutton.grid(column = 2, row = 4, rowspan = 1)
 

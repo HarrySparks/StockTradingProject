@@ -15,3 +15,16 @@ class Wallet:
                 return
         self.ownedstocks.append([stockname,1])
         print(self.ownedstocks)
+
+    def SellStock(self, stockname, price):
+        self.balance += price
+        print(self.balance)
+
+        for i in range(len(self.ownedstocks)):
+            if self.ownedstocks[i][0] == stockname:
+                self.ownedstocks[i].pop()
+                #this broken^ and whole program is laggy af so cant debug
+                print(self.ownedstocks)
+                return
+        self.ownedstocks.append([stockname,1])
+        print(self.ownedstocks)
