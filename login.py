@@ -42,7 +42,6 @@ def login():
     if c.fetchone():
         messagebox.showinfo("Success", "Login successful.")
         subprocess.run(["python", "main.py"])
-        self.app.root.destroy()
         root.destroy()
     else:
         messagebox.showerror("Error", "Invalid username or password.")
