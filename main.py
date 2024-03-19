@@ -18,6 +18,7 @@ colour5="#7F8A9E"
 colour6="#CCC9DC"
 
 cgreen="#00FF00"
+rgreen="#FF0000"
 
 window = Tk()
 window.geometry("900x900")
@@ -65,7 +66,7 @@ inputdate.grid(column = 1, row = 4)
 buybutton = Button(mainframe, text="Buy", width=35, command=lambda:wallet.BuyStock(inputstock.get(),stock.price(inputstock.get())), bg=cgreen)
 buybutton.grid(column = 2, row = 1, rowspan = 1)
 
-sellbutton = Button(mainframe, text="Sell", width=35, command=lambda:wallet.SellStock(inputstock.get(),stock.price(inputstock.get())), bg=cgreen)
+sellbutton = Button(mainframe, text="Sell", width=35, command=lambda:wallet.SellStock(inputstock.get(),stock.price(inputstock.get())), bg=rgreen)
 sellbutton.grid(column = 2, row = 2, rowspan = 1)
 
 getdatabutton = Button(mainframe, text="Get Data", command=GetStockGraph, width=35, bg=colour5)
