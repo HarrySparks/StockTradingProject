@@ -21,7 +21,7 @@ cgreen="#00FF00"
 rgreen="#FF0000"
 
 window = Tk()
-window.geometry("900x900")
+window.geometry("800x800")
 window.config(padx=50, pady=10, bg=colour3)
 window.resizable(True, True)
 
@@ -50,6 +50,8 @@ def GetStockGraph():
 
 mainframe = Frame(window)
 graphframe = Frame(window) 
+
+walletframe = Frame(mainframe)
 
 stocklabel = Label(mainframe, text="Enter Stock Ticker:")
 stocklabel.grid(column = 1, row = 0)
@@ -85,10 +87,22 @@ inputrange1.grid(column = 3, row = 4)
 displaylabel = Label(mainframe, text="", bg=colour6) 
 displaylabel.grid(column = 2, row = 5)
 
-mainframe.place(relx=0.5, rely=0.1, anchor=CENTER)
-graphframe.place(relx=0.5, rely=1, anchor=S)
+idfk = wallet.GetOwnedStocks()
+print("sfgdfgdg" + idfk)
+walletlabel = Label(walletframe, text="")# shit dont work
+walletlabel.grid(column = 0, row = 0, sticky=N)
 
-window.grid_rowconfigure(2, minsize=10) #creates a gap at row 2 of space 10
-window.grid_rowconfigure(6, minsize=30)
+mainframe.place(relx=0.5, rely=0.1, anchor=CENTER)
+graphframe.place(relx=0.5, rely=0.9, anchor=S)
+
+walletframe.place(relx=1, rely=0.1, anchor=E)
+
+walletframe.config(bg="#990099")
+
+
+
+mainframe.grid_columnconfigure(4, minsize=100) 
+walletframe.grid_columnconfigure(0, minsize=10) 
+walletframe.grid_columnconfigure(2, minsize=10) 
 
 window.mainloop()
